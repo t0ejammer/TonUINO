@@ -8,6 +8,11 @@ DESTNUM=$(printf "%02g" $1)
 DESTINATION=$(realpath $DESTFOLDER/$DESTNUM)
 ORIGIN=$(pwd)
 
+# create database file, if it does not exist
+if [ ! -e $DESTFOLDER.txt ]; then
+    for num in $(seq 1 99); do printf "%02g\n" $num >> sdcard.txt; done
+fi
+exit
 # check destination folder existence, otherwise create it
 if [ ! -e $DESTINATION ]; then
     mkdir -p $DESTINATION
